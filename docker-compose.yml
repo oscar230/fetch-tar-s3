@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  my-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ENDPOINT_URL=host
+      - ACCESS_KEY=access-key
+      - SECRET_KEY=secret-key
+      - BUCKET_NAME=bucket-name
+      - DEST_PATH=/path/to/volume
+    volumes:
+      - type: bind
+        source: /path/on/host
+        target: /path/to/shared/docker/volume
